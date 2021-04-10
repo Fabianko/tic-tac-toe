@@ -14,6 +14,8 @@ export class CellComponent implements OnInit {
 
   @Input() i: number;
 
+  @Input() win: number;
+
   @Input() j: number;
 
   constructor() { }
@@ -23,7 +25,7 @@ export class CellComponent implements OnInit {
   }
 
   changeState() {
-    if (!this.state) {
+    if (!this.state && !this.win) {
       this.state = this.value;
       console.log({
         'value':this.value,

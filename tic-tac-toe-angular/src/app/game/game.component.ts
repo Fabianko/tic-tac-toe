@@ -6,45 +6,96 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./game.component.css']
 })
 export class GameComponent implements OnInit {
+  public winner:number;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  validWin() {
+  validWin(e:boardClass) {
     if (
-      this.valid1() ||
-      this.valid2() ||
-      this.valid3() ||
-      this.valid4()
+      this.validHorizontalWin(e.board,e.nowPlayer) ||
+      this.validVerticalWin(e.board,e.nowPlayer) ||
+      this.validDiagonal1(e.board,e.nowPlayer) ||
+      this.validDiagonal2(e.board,e.nowPlayer)
     ) {
-      return true;
+      this.winner = e.nowPlayer;
     }
     else {
       return false;
     }
   }
 
-  public valid1() :boolean {
-    /*for (let index = 0; index < array.length; index++) {
-      const element = array[index];
 
-    }*/
+  public validHorizontalWin(board, player) :boolean {
+    let i = 0;
+    let j = 0;
+    while (i < board.length) {
+        if (board[i][j] == player) {
+            if (j == board.length-1) {
+                return true;
+            }
+            j++;
+        }
+        else {
+            i++;
+        }
+    }
     return false;
   }
 
-  public valid2() :boolean{
+  public validVerticalWin(board,player) :boolean{
+    let i = 0;
+    let j = 0;
+    while (j < board.length) {
+        if (board[i][j] == player) {
+            if (i == board.length-1) {
+                return true;
+            }
+            i++;
+        }
+        else {
+            j++;
+        }
+    }
     return false;
   }
 
-  public valid3():boolean {
-    return false;
+  public validDiagonal1(board,player):boolean {
+    let i = 0;
+    let j = 0;
+    while (j < board.length) {
+
+      if (board[i][j] != player) {
+        return false;
+      }
+      i++;
+      j++;
+
+    }
+    return true;
   }
 
-  public valid4():boolean {
-    return false;
+  public validDiagonal2(board,player):boolean {
+    let i = 0;
+    let j = board.length -1;
+    while (i < board.length) {
+
+      if (board[i][j] != player) {
+        return false;
+      }
+      i++;
+      j--;
+
+    }
+    return true;
   }
 
 
+}
+
+export class boardClass {
+  board: number[][]
+  nowPlayer:number
 }

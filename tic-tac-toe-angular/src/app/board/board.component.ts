@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-board',
@@ -8,16 +8,25 @@ import { Component, OnInit } from '@angular/core';
 export class BoardComponent implements OnInit {
 
   array: number[][];
+  arrayGame: number[][];
   maxValue: number = 0;
   sizeArray: number = 3;
   player: number = 1;
+  @Input() winner: number;
+  @Output() gameChangeBoard = new EventEmitter<any>();
+
   constructor() { }
 
   ngOnInit(): void {
     this.configInit();
   }
   public configInit(){
+    this.player = 1;
+    this.array = undefined;
+    this.winner = undefined;
+    this.arrayGame = undefined;
     this.array = this.createArray(this.sizeArray);
+    this.arrayGame = this.createArray(this.sizeArray);
   }
 
   public createArray(size: number):  number[][] {
@@ -38,8 +47,13 @@ export class BoardComponent implements OnInit {
   }
 
   public nextPlayer(result) {
-    //this.array[result.i][result.j] = result.value;
-    //debugger;
+    this.arrayGame[result.i][result.j] = result.value;
+    this.gameChangeBoard.emit(
+      {
+        'board':this.arrayGame,
+        'nowPlayer': this.player
+      }
+      );
     this.player = this.player == 1 ? 2 : 1;
   }
 }

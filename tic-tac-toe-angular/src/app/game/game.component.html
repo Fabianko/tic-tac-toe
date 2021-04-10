@@ -1,5 +1,5 @@
 <div class="container__background">
   <div class="game__container">
-    <app-board></app-board>
+    <app-board (gameChangeBoard)='validWin($event)' [winner]='winner'></app-board>
   </div>
 </div>
