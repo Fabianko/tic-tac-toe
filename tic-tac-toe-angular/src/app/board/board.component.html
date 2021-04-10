@@ -1,5 +1,5 @@
-<h1>Titulo</h1>
-<h2>Jugador {{player==1?'x':'o'}}</h2>
+<h1>Game TicTacToe</h1>
+<h2>Player turn : {{player==1?'X':'O'}}</h2>
 
 
   <ng-container  *ngIf="array">
@@ -7,7 +7,7 @@
       <div style="display: table">
         <ng-container *ngFor="let col of row; let j = index">
           <div class="text-center color-{{ col }} elem-game ">
-            <app-cell [value]="player" [i]='i' [j]='j' (changeStateEmitter)='nextPlayer($event)'></app-cell>
+            <app-cell [value]='player' [i]='i' [j]='j' (changeStateEmitter)='nextPlayer($event)'></app-cell>
           </div>
         </ng-container>
       </div>

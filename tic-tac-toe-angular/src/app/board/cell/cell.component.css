@@ -1,8 +1,12 @@
 .cell{
   background-color: #c4cff3;
-  width: 100%;
-  height: 100%;
-
+  width: 100px;
+  max-width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-height: 100px;
   font-size: 40px;
 }
 .cell__color-1{
@@ -10,4 +14,7 @@
 }
 .cell__color-2{
   color: blue;
+}
+.cell__color-{
+  color: #c4cff3;
 }

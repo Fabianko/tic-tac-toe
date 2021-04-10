@@ -36,7 +36,5 @@ h2 {
 .game__container{
   background-color: #F3F6FA;
   position: relative;
-  width: 50%;
-  height:50%;
   padding:20px;
 }

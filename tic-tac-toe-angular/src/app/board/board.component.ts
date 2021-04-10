@@ -38,7 +38,7 @@ export class BoardComponent implements OnInit {
   }
 
   public nextPlayer(result) {
-    this.array[result.i][result.j] = result.value;
+    //this.array[result.i][result.j] = result.value;
     //debugger;
     this.player = this.player == 1 ? 2 : 1;
   }

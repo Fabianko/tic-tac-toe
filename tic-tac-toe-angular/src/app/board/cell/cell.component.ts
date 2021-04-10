@@ -19,12 +19,17 @@ export class CellComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
   changeState() {
     if (!this.state) {
       this.state = this.value;
-
+      console.log({
+        'value':this.value,
+        'i':this.i,
+        'j':this.j
+      })
       this.changeStateEmitter.emit(
         {
           'value':this.value,
